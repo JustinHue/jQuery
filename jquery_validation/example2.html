@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register Page</title>
+
+		<!-- Javascript Includes -->
+        <script language="javascript" type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script language="javascript" type="text/javascript" src="jquery-validation/jquery.js"></script>
+        <script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="reset.css">
+	</head>
+<body>
+    <h1>Register</h1>
+    <!-- Register's Form Section -->
+    <div>
+        <form id="registerform" action="registerform.php" method="POST">
+			<label for="username">Create your Username</label>
+			<br />
+            <input name="username" type="text" />
+            <br />
+			<label for="email">Create your email</label>
+			<br />
+            <input name="email" type="text" />
+            <br />
+			<label for="password">Create a password</label>
+			<br />
+            <input id="password" type="password" name="password" />
+            <br />
+			<label for="confirm_password">Confirm password</label>
+			<br />
+            <input type="password" name="confirm_password" />
+            <br />
+            <input class="register-button" type="submit" value="Create my account" />
+        </form>
+    </div>
+</body>
+
+<!-- Scripts -->
+<script language="javascript" type="text/javascript">   
+
+    // validate signup form on keyup and submit
+    $("#registerform").validate({
+        rules: {
+            username: { 
+				required: true,
+				minlength: 2
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			password: {
+				required: true,
+				minlength: 5
+			},
+			confirm_password: {
+				required: true,
+				minlength: 5,
+				equalTo: "#password"
+			}
+        },
+        messages: {
+            username: {
+				required: "Please enter a username",
+				minlength: "Your username must consist of at least 2 characters"
+			},
+			password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long"
+			},
+			confirm_password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long",
+				equalTo: "Please enter the same password as above"
+			},
+			email: "Please enter a valid email address"
+        }
+    });
+
+    // validate login form on keyup and submit
+    $("#loginform").validate({
+		rules: {
+            loginusername: { 
+                required: true,
+                minlength: 2
+            },
+			loginpassword: {
+				required: true,
+				minlength: 5
+			}
+		},
+		messages: {
+			loginusername: {
+				required: "Please enter a username",
+				minlength: "Your username must consist of at least 2 characters"
+			},
+			loginpassword: {
+				required: "Please enter a password",
+				minlength: "Your password must be at least 4 characters long"
+			}
+		}
+	});
+
+</script>
+
+</html>
